@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anas Farooqui | AI Films & Visual Stories</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #080808;
+  --panel: #11110f;
+  --gold: #c9a66b;
+  --white: #f4f0e9;
+  --muted: #a7a29a;
+  --line: rgba(201,166,107,.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button { font: inherit; }
+
+.container {
+  width: min(1160px, 90%);
+  margin: auto;
+}
+
+/* HEADER */
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 23px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.logo span { color: var(--gold); }
+
+.logo small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+.menu-btn {
+  display: none;
+  background: none;
+  color: white;
+  border: 1px solid var(--line);
+  padding: 9px 13px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.92), rgba(0,0,0,.55), rgba(0,0,0,.35)),
+    linear-gradient(0deg, #080808, transparent 40%),
+    url("https://images.unsplash.com/photo-1485846234645-a62644f84728?q=85&w=2000")
+    center/cover no-repeat;
+}
+
+.hero-content {
+  padding-top: 100px;
+  max-width: 850px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 8vw, 100px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.hero h1 span {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-description {
+  max-width: 490px;
+  color: #c3beb5;
+  line-height: 1.9;
+  font-size: 14px;
+  margin: 27px 0 35px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 27px;
+  background: var(--gold);
+  color: #080808;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: var(--white);
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--white);
+  margin-left: 10px;
+}
+
+.btn-outline:hover {
+  background: var(--gold);
+  color: #080808;
+}
+
+.scroll-note {
+  position: absolute;
+  bottom: 35px;
+  left: 5%;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+/* COMMON SECTIONS */
+
+section { padding: 110px 0; }
+
+.section-label {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 17px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
+.section-intro {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+  max-width: 550px;
+  margin-bottom: 48px;
+}
+
+/* FEATURED FILMS */
+
+.films { background: var(--bg); }
+
+.film-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 38px 25px;
+}
+
+.film-card { min-width: 0; }
+
+.video-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #171512;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+}
+
+.video-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-tools {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+}
+
+.sound-btn {
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(0,0,0,.72);
+  color: white;
+  padding: 9px 13px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.sound-btn:hover {
+  background: var(--gold);
+  color: #080808;
+}
+
+.film-info {
+  padding: 19px 2px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.film-number {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.film-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.film-info p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 7px;
+  letter-spacing: 1px;
+}
+
+.full-film {
+  color: var(--gold);
+  border: 1px solid var(--line);
+  padding: 10px 13px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  margin-top: 20px;
+  transition: .3s;
+}
+
+.full-film:hover {
+  background: var(--gold);
+  color: #080808;
+}
+
+/* ABOUT */
+
+.about { background: var(--panel); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-mark {
+  min-height: 380px;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle, rgba(201,166,107,.12), transparent 65%),
+    #0b0b0a;
+}
+
+.about-mark span {
+  font-family: 'Playfair Display', serif;
+  font-size: 130px;
+  color: var(--gold);
+  font-style: italic;
+}
+
+.about-text {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2;
+  margin: 20px 0;
+}
+
+.about-name {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-top: 28px;
+}
+
+/* SERVICES */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.service {
+  padding: 32px 25px;
+  min-height: 160px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: .3s;
+}
+
+.service:hover { background: var(--panel); }
+
+.service span {
+  color: var(--gold);
+  font-size: 11px;
+}
+
+.service h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+/* MORE WORK */
+
+.more-work {
+  background: var(--panel);
+  text-align: center;
+}
+
+.more-work .section-intro {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CONTACT */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.contact-text {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+  max-width: 430px;
+  margin-top: 20px;
+}
+
+.contact-item {
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-item small {
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contact-item a {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.contact-item a:hover { color: var(--gold); }
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 0;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+/* MOBILE */
+
+@media(max-width: 760px) {
+  header { padding: 18px 0; }
+
+  .menu-btn { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 75px;
+    left: 5%;
+    width: 90%;
+    background: #11110f;
+    border: 1px solid var(--line);
+    padding: 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  .nav-links.active { display: flex; }
+
+  .hero { min-height: 90vh; }
+
+  .hero h1 { font-size: 52px; }
+
+  section { padding: 75px 0; }
+
+  .film-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .about-mark { min-height: 260px; }
+
+  .about-mark span { font-size: 100px; }
+
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .film-info h3 { font-size: 21px; }
+
+  .footer-inner { flex-direction: column; }
+
+  .btn-outline { margin: 12px 0 0; }
+}
+
+@media(max-width: 380px) {
+  .services-grid { grid-template-columns: 1fr; }
+
+  .film-info { flex-direction: column; }
+
+  .full-film { margin-top: 5px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="#home" class="logo">
+      ANAS<span>.</span> F
+      <small>AI FILMS · VISUAL STORIES</small>
+    </a>
+
+    <button class="menu-btn" id="menuBtn">MENU ☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#films">Films</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+  <div class="container hero-content">
+
+    <p class="eyebrow">AI FILMMAKER · VISUAL STORYTELLER</p>
+
+    <h1>
+      Stories beyond<br>
+      the <span>ordinary.</span>
+    </h1>
+
+    <p class="hero-description">
+      AI Video Producer and Cinematic Editor specialising in
+      AI-assisted filmmaking, cinematic storytelling,
+      luxury product films and commercial visuals.
+    </p>
+
+    <a href="#films" class="btn">Explore Films</a>
+    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+
+  </div>
+
+  <div class="scroll-note">SCROLL TO EXPLORE ↓</div>
+</section>
+
+
+<!-- FEATURED FILMS -->
+
+<section class="films" id="films">
+  <div class="container">
+
+    <p class="section-label">Selected Works · 2026</p>
+    <h2 class="section-title">Featured Films</h2>
+
+    <p class="section-intro">
+      A collection of cinematic stories, crafted with imagination,
+      technology and a passion for visual storytelling.
+      Watch the mini trailers below.
+    </p>
+
+    <div class="film-grid">
+
+      <!-- 01 EIDOLON -->
+
+      <article class="film-card">
+        <div class="video-wrap">
+
+          <video class="trailer" autoplay muted loop playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/f6onq7rt/video/upload/v1794288378/InShot_20261029_144310692.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-tools">
+            <button class="sound-btn" type="button">SOUND OFF</button>
+          </div>
+
+        </div>
+
+        <div class="film-info">
+          <div>
+            <div class="film-number">01 / LUXURY CAMPAIGN</div>
+            <h3>EIDOLON</h3>
+            <p>Luxury Perfume Film</p>
+          </div>
+
+          <a class="full-film"
+             href="https://drive.google.com/file/d/10UL3PNdycHX0yb7ubI46ZQ71_WdI1GYy/preview"
+             target="_blank" rel="noopener">
+             FULL FILM ↗
+          </a>
+        </div>
+      </article>
+
+
+      <!-- 02 ORKA -->
+
+      <article class="film-card">
+        <div class="video-wrap">
+
+          <video class="trailer" autoplay muted loop playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/f6onq7rt/video/upload/InShot_20261029_133729405.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-tools">
+            <button class="sound-btn" type="button">SOUND OFF</button>
+          </div>
+
+        </div>
+
+        <div class="film-info">
+          <div>
+            <div class="film-number">02 / BRAND FILM</div>
+            <h3>ORKA</h3>
+            <p>Silence is a Superpower</p>
+          </div>
+
+          <a class="full-film"
+             href="https://drive.google.com/file/d/1e8jnOzZ1o1_cRzVPOIdZ6Nxsx_u7Txsu/preview"
+             target="_blank" rel="noopener">
+             FULL FILM ↗
+          </a>
+        </div>
+      </article>
+
+
+      <!-- 03 NOCTURNE -->
+
+      <article class="film-card">
+        <div class="video-wrap">
+
+          <video class="trailer" autoplay muted loop playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/f6onq7rt/video/upload/InShot_20261029_141442668.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-tools">
+            <button class="sound-btn" type="button">SOUND OFF</button>
+          </div>
+
+        </div>
+
+        <div class="film-info">
+          <div>
+            <div class="film-number">03 / CINEMATIC STORY</div>
+            <h3>NOCTURNE</h3>
+            <p>The Monster in a Suit</p>
+          </div>
+
+          <a class="full-film"
+             href="https://drive.google.com/file/d/10Kcv8AP-yJ4era1LeXladbPnJdT_bt-W/preview"
+             target="_blank" rel="noopener">
+             FULL FILM ↗
+          </a>
+        </div>
+      </article>
+
+
+      <!-- 04 THE NIGHT SHIFT -->
+
+      <article class="film-card">
+        <div class="video-wrap">
+
+          <video class="trailer" autoplay muted loop playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/f6onq7rt/video/upload/InShot_20261029_142441746.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-tools">
+            <button class="sound-btn" type="button">SOUND OFF</button>
+          </div>
+
+        </div>
+
+        <div class="film-info">
+          <div>
+            <div class="film-number">04 / SCIENCE FILM</div>
+            <h3>THE NIGHT SHIFT</h3>
+            <p>Science After Dark</p>
+          </div>
+
+          <a class="full-film"
+             href="https://drive.google.com/file/d/1BehMI3fhKdX8ulgRVoACLCYbzvYZpUDw/preview"
+             target="_blank" rel="noopener">
+             FULL FILM ↗
+          </a>
+        </div>
+      </article>
+
+
+      <!-- 05 RUH-E-DECCAN -->
+
+      <article class="film-card">
+        <div class="video-wrap">
+
+          <video class="trailer" autoplay muted loop playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/f6onq7rt/video/upload/InShot_20261029_135541860.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-tools">
+            <button class="sound-btn" type="button">SOUND OFF</button>
+          </div>
+
+        </div>
+
+        <div class="film-info">
+          <div>
+            <div class="film-number">05 / HERITAGE FILM</div>
+            <h3>RUH-E-DECCAN</h3>
+            <p>Heritage Luxury Storytelling</p>
+          </div>
+
+          <a class="full-film"
+             href="https://drive.google.com/file/d/1BuvukbAg1jIDh70dhH2epwRnHWbdBBYm/preview"
+             target="_blank" rel="noopener">
+             FULL FILM ↗
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+  <div class="container about-grid">
+
+    <div class="about-mark">
+      <span>AF.</span>
+    </div>
+
+    <div>
+      <p class="section-label">The Creative Mind</p>
+      <h2 class="section-title">About Anas</h2>
+
+      <p class="about-text">
+        Anas Farooqui is an AI Video Producer and Cinematic Editor
+        specialising in AI-assisted filmmaking, cinematic
+        storytelling, luxury product films and commercial visuals.
+      </p>
+
+      <p class="about-text">
+        Through creative direction and emerging AI tools,
+        he transforms ideas into cinematic visual experiences
+        with attention to detail, atmosphere and storytelling.
+      </p>
+
+      <p class="about-name">ANAS FAROOQUI · AI FILMMAKER</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+  <div class="container">
+
+    <p class="section-label">What I Create</p>
+    <h2 class="section-title">Creative Services</h2>
+
+    <p class="section-intro">
+      Visual storytelling and cinematic production for brands,
+      ideas and experiences.
+    </p>
+
+    <div class="services-grid">
+
+      <div class="service">
+        <span>01</span>
+        <h3>AI Filmmaking</h3>
+      </div>
+
+      <div class="service">
+        <span>02</span>
+        <h3>Luxury Campaigns</h3>
+      </div>
+
+      <div class="service">
+        <span>03</span>
+        <h3>Cinematic Editing</h3>
+      </div>
+
+      <div class="service">
+        <span>04</span>
+        <h3>Science Storytelling</h3>
+      </div>
+
+      <div class="service">
+        <span>05</span>
+        <h3>Heritage Narratives</h3>
+      </div>
+
+      <div class="service">
+        <span>06</span>
+        <h3>Creative Direction</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- MORE WORK -->
+
+<section class="more-work" id="more-work">
+  <div class="container">
+
+    <p class="section-label">Explore More</p>
+    <h2 class="section-title">Beyond The Featured</h2>
+
+    <p class="section-intro">
+      Discover more experiments, visual concepts and cinematic
+      projects from the creative archive.
+    </p>
+
+    <a href="https://drive.google.com/drive/folders/1S2evG2jxODN2p0fwQCJDNUAlhsOs76E7"
+       class="btn" target="_blank" rel="noopener">
+       VIEW MORE WORK ↗
+    </a>
+
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="container contact-grid">
+
+    <div>
+      <p class="section-label">Let's Collaborate</p>
+      <h2 class="section-title">Have a story<br>to tell?</h2>
+
+      <p class="contact-text">
+        Have a creative idea, brand project or cinematic concept?
+        Let's connect and create something memorable together.
+      </p>
+    </div>
+
+    <div>
+
+      <!-- EMAIL: OPEN GMAIL COMPOSE -->
+
+      <div class="contact-item">
+        <small>EMAIL</small>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mafar.1922@gmail.com"
+           target="_blank" rel="noopener">
+          mafar.1922@gmail.com ↗
+        </a>
+      </div>
+
+      <!-- PHONE: OPEN CALL OPTION -->
+
+      <div class="contact-item">
+        <small>PHONE</small>
+        <a href="tel:+917982304029">
+          +91 7982304029 ↗
+        </a>
+      </div>
+
+      <!-- WHATSAPP: OPEN CHAT -->
+
+      <div class="contact-item">
+        <small>WHATSAPP</small>
+        <a href="https://wa.me/917982304029"
+           target="_blank" rel="noopener">
+          Chat on WhatsApp ↗
+        </a>
+      </div>
+
+      <!-- LINKEDIN -->
+
+      <div class="contact-item">
+        <small>LINKEDIN</small>
+        <a href="https://www.linkedin.com/in/anas-farooqui-0a6b52211?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+           target="_blank" rel="noopener">
+           Connect on LinkedIn ↗
+        </a>
+      </div>
+
+      <!-- RESUME -->
+
+      <div class="contact-item">
+        <small>RESUME</small>
+        <a href="https://drive.google.com/file/d/1NLhieFz7_z70V6mASefNtox94h0Qsi7K/view?usp=drivesdk"
+           target="_blank" rel="noopener">
+           View Resume ↗
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> ANAS FAROOQUI. ALL RIGHTS RESERVED.</p>
+    <p>AI FILMS · VISUAL STORIES</p>
+  </div>
+</footer>
+
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", function() {
+  navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(function(link) {
+  link.addEventListener("click", function() {
+    navLinks.classList.remove("active");
+  });
+});
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+
+/* VIDEO SOUND CONTROLS */
+
+document.querySelectorAll(".film-card").forEach(function(card) {
+
+  const video = card.querySelector("video");
+  const soundBtn = card.querySelector(".sound-btn");
+
+  soundBtn.addEventListener("click", function() {
+
+    video.muted = !video.muted;
+
+    soundBtn.textContent =
+      video.muted ? "SOUND OFF" : "SOUND ON";
+
+    if (!video.muted) {
+      video.play().catch(function() {});
+    }
+
+  });
+
+  video.play().catch(function() {});
+
+});
+</script>
+
+</body>
+      </html>
